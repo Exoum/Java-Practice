@@ -6,7 +6,7 @@ import java.util.Random;
 public class App {
 
     private static final String all_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-    "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()-_=+[{]};:'\",<.>/? ";
+    "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!@#$%^&*()-_=+[{]};:'\",<.>/? ";  //character strings for random generation text
     public static void main(String[] args) throws UnsupportedEncodingException {
 
         String string = "";
@@ -16,7 +16,7 @@ public class App {
 
         int menu = 1;
 
-        while (true){
+        while (true){  // Terminal menu               
             System.out.println("1. Сгенерировать строку.\n2. Записать строку в ручную.\n" +
             "3. Произвести расчеты символов\n4. Выйти из программы.");
             try{
@@ -61,7 +61,7 @@ public class App {
         }
     }
 
-    public static String generateRandomString(int len){
+    public static String generateRandomString(int len){  //method for random string generation
 
         Random random = new Random();
 
@@ -75,7 +75,7 @@ public class App {
         return stringBuilder.toString();
     }
 
-    public static void calcNumberOfChar (String string){
+    public static void calcNumberOfChar (String string){  //method for calculating the number of Cyrillic, Latin, and punctuation characters in a string
         
         int upCase = 0, 
         lowCase = 0,
@@ -86,7 +86,7 @@ public class App {
         int len = string.length();
 
         for(int i=0; i<len;i++) {
-            if(Character.UnicodeScript.of(string.charAt(i)).equals(Character.UnicodeScript.CYRILLIC)) {
+            if(Character.UnicodeScript.of(string.charAt(i)).equals(Character.UnicodeScript.CYRILLIC)) {  //counting Cyrillic characters in a string
                 if(Character.isUpperCase(string.charAt(i))){
                     upCase++ ;
                 }
@@ -94,7 +94,7 @@ public class App {
                     lowCase++;
                 }
             }
-            else if(Character.UnicodeScript.of(string.charAt(i)).equals(Character.UnicodeScript.LATIN)){
+            else if(Character.UnicodeScript.of(string.charAt(i)).equals(Character.UnicodeScript.LATIN)){  //counting Latin characters in a string
                 if(Character.isUpperCase(string.charAt(i))){
                     upCaseEn++ ;
                 }
@@ -109,7 +109,7 @@ public class App {
         System.out.printf("Кол-во строчных символов кириллица: %d\nКол-во прописных символов кириллица: %d\nКол-во строчных символов латиница: %d\nКол-во прописных символов латиница: %d\nКол-во знаков препинания и пробелов: %d\n\n",upCase, lowCase, upCaseEn, lowCaseEn, punMark);
     }
 
-    public static void clearConsole() {  
+    public static void clearConsole() {  //method for cleaning the console
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
     }  
